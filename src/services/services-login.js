@@ -1,14 +1,14 @@
-const { Services } = require('../Services/services-loguin');
+const { UserModel } = require('../models');
 
 const serviceLogin = async ({ email, password }) => {
-  const service = await Services.findOne({
+  const service = await UserModel.findOne({
     details: ['id', 'email', 'displayName'],
     where: { email, password },
   });
 
   if (!service) return { type: 'SERVICE_NOT_FOUND' };
   // const token = createToken(service.dataValues);
-  // return token;
+  return 'token';
 };
 
 module.exports = {
