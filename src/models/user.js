@@ -1,5 +1,5 @@
-const UserModel = (sequelize, modelUser) => {
-  const user = sequelize.define('User', {
+module.exports = (sequelize, modelUser) => {
+  const User = sequelize.define('User', {
     id: {
       type: modelUser.INTEGER,
       autoIncrement: true,
@@ -18,7 +18,5 @@ const UserModel = (sequelize, modelUser) => {
       type: modelUser.STRING
     },
   });
-  return user;
+  return User;
 };
-
-module.exports = UserModel;

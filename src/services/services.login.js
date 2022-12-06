@@ -1,7 +1,7 @@
-const { UserModel } = require('../models');
+const { User } = require('../models');
 
 const serviceLogin = async ({ email, password }) => {
-  const service = await UserModel.findOne({
+  const service = await User.findOne({
     details: ['id', 'email', 'displayName'],
     where: { email, password },
   });
@@ -11,6 +11,4 @@ const serviceLogin = async ({ email, password }) => {
   return 'token';
 };
 
-module.exports = {
-  serviceLogin,
-};
+module.exports = serviceLogin;

@@ -1,8 +1,8 @@
-const login = require('../services/services-login');
+const serviceLogin = require('../services/services.login');
 
 const enter = async (req, res, next) => {
   try {
-    const auth = await login.serviceLogin(req.body);
+    const auth = await serviceLogin(req.body);
     if (auth.type === 'USER_NOT_FOUND') {
       return res.status(400).json({ message: 'Invalid fields' });
     }
