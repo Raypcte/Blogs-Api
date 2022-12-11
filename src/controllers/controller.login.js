@@ -1,20 +1,30 @@
-const serviceLogin = require('../services/services.login');
+const services = require('../services/services.login');
 
-const enter = async (req, res, next) => {
+const getAll = async (_req, res) => {
   try {
-    const auth = await serviceLogin(req.body);
-    if (auth.type === 'USER_NOT_FOUND') {
-      return res.status(400).json({ message: 'Invalid fields' });
-    }
+    const users = await services.getAll();
+    return res.status(200).json(users);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({
+      message: 'Ocorreu um erro no getAllController',
+    });
+  }
+};
 
-    req.user = auth;
-
-    return res.status(200).json({ token: auth });
-  } catch (id) {
-    next(id);
+const enter = async (req, res) => {
+  try {
+    const { token } = req;
+    return res.status(200).json({ token });
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({
+      message: 'Ocorreu um erro no enterController',
+    });
   }
 };
 
 module.exports = {
+  getAll,
   enter,
 };

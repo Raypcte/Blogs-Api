@@ -1,11 +1,11 @@
-module.exports = (sequelize, modelUser) => {
+const userModel = (sequelize, modelUser) => {
   const User = sequelize.define('User', {
     id: {
       type: modelUser.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    display_name:{
+    displayName:{
       type: modelUser.STRING
     },
     email: {
@@ -17,6 +17,11 @@ module.exports = (sequelize, modelUser) => {
     image: {
       type: modelUser.STRING
     },
+  }, {
+    timestamps: false,
+    underscored: true,
   });
   return User;
 };
+
+module.exports = userModel;

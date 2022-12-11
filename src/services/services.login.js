@@ -1,14 +1,19 @@
 const { User } = require('../models');
 
-const serviceLogin = async ({ email, password }) => {
-  const service = await User.findOne({
-    details: ['id', 'email', 'displayName'],
-    where: { email, password },
-  });
-
-  if (!service) return { type: 'SERVICE_NOT_FOUND' };
-  // const token = createToken(service.dataValues);
-  return 'token';
+const getAll = async () => {
+  const users = await User.findAll();
+  return users;
 };
 
-module.exports = serviceLogin;
+const getOne = async ({ email, password }) => {
+    const user = await User.findOne({
+      // details: ['id', 'email', 'displayName'],
+      where: { email, password },
+    });
+    return user;
+};
+
+module.exports = {
+  getAll,
+  getOne,
+};
