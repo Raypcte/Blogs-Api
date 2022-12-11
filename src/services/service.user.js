@@ -13,7 +13,14 @@ const getOne = async ({ email, password }) => {
     return user;
 };
 
+const createUser = async (infoUser) => {
+  const newUser = await User.create(infoUser);
+
+  return newUser;
+};
+
 module.exports = {
   getAll,
   getOne,
+  createUser,
 };
