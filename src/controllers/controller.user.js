@@ -4,7 +4,15 @@ const { createToken } = require('../auth/validateJWT');
 const getAll = async (_req, res) => {
   try {
     const users = await services.getAll();
-    return res.status(200).json(users);
+    const usersWithoutPassword = users.map(
+      ({ id, displayName, email, image }) => ({
+        id,
+        displayName,
+        email,
+        image,
+      }),
+    );
+    return res.status(200).json(usersWithoutPassword);
   } catch (e) {
     console.log(e.message);
     res.status(500).json({

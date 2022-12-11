@@ -1,10 +1,11 @@
 const express = require('express');
 const login = require('../controllers/controller.user');
 const mid = require('../middlewares');
+const auth = require('../auth/validateJWT');
 
 const userRouter = express.Router();
 
-userRouter.get('/user', login.getAll);
+userRouter.get('/user', auth.validateToken, login.getAll);
 
 userRouter.post(
   '/user',
