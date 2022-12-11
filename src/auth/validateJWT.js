@@ -27,8 +27,23 @@ const createToken = async (req, res, next) => {
   next();
 };
 
-const validateToken = (_req, _res, next) => {
-  next();
+const validateToken = (req, res, next) => {
+  const token = req.header('Authorization');
+
+  if (!token) {
+    return res.status(401).json({ error: 'Token não encontrado' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, secret);
+    if (decoded) {
+      req.decodedToken = decoded;
+    }
+
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: error.message });
+  }
 };
 
 module.exports = {
