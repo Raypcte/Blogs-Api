@@ -7,6 +7,8 @@ const userRouter = express.Router();
 
 userRouter.get('/user', auth.validateToken, login.getAll);
 
+userRouter.get('/user/:id', auth.validateToken, login.getUserById);
+
 userRouter.post(
   '/user',
   mid.validNameUser,

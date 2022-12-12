@@ -21,6 +21,19 @@ const getAll = async (_req, res) => {
   }
 };
 
+const getUserById = async (req, res) => {
+  try {
+    const { id: idUser } = req.params;
+    const { id, displayName, email, image } = await services.getUserById(idUser);
+    return res.status(200).json({ id, displayName, email, image });
+  } catch (e) {
+    console.log(e.message);
+    res.status(404).json({
+      message: 'User does not exist',
+    });
+  }
+};
+
 const enter = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -55,4 +68,5 @@ module.exports = {
   getAll,
   enter,
   createUser,
+  getUserById,
 };
