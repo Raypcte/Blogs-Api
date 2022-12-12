@@ -77,6 +77,18 @@ const validExistedUser = async (req, res, next) => {
   return next();
 };
 
+const validNameCategory = (req, res, next) => {
+  const { name } = req.body;
+
+  if (!name) {
+    return res.status(400).json({
+      message: '"name" is required',
+    });
+  }
+
+  return next();
+};
+
 module.exports = {
   validLoginBody,
   validLoginUser,
@@ -84,4 +96,5 @@ module.exports = {
   validEmailUser,
   validPasswordUser,
   validExistedUser,
+  validNameCategory,
 };
