@@ -5,7 +5,7 @@ const auth = require('../auth/validateJWT');
 
 const categoryRouter = express.Router();
 
-// categoryRouter.get('/user', auth.validateToken, login.getAll);
+categoryRouter.get('/categories', auth.validateToken, category.getAll);
 
 // categoryRouter.get('/user/:id', auth.validateToken, login.getUserById);
 

@@ -14,6 +14,20 @@ const createCategory = async (req, res) => {
   }
 };
 
+const getAll = async (_req, res) => {
+  try {
+    const categories = await services.getAll();
+  
+    return res.status(200).json(categories);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({
+      message: 'Ocorreu um erro no getAll do Controller',
+    });
+  }
+};
+
 module.exports = {
   createCategory,
+  getAll,
 };
