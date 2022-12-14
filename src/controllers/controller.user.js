@@ -40,6 +40,7 @@ const enter = async (req, res) => {
     const user = await services.getOne({ email, password });
     const token = createToken(user);
     req.token = token;
+    req.userId = user.id;
     return res.status(200).json({ token });
   } catch (e) {
     console.log(e.message);

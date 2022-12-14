@@ -28,6 +28,8 @@ const validateToken = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, secret);
+    req.userId = decoded.data.userId;
+
     if (decoded) {
       req.decodedToken = decoded;
     }
