@@ -1,10 +1,11 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# README 
+
+- O projeto consiste em uma API que realiza um CRUD (Create, Read, Update e Delete) de posts de blog. Para criação das tabelas do banco de dados, foi utilizado a técnica de Mapeamento Objeto-Relacional (ORM) através do pacote sequelize do Node.js. Foram feitas autenticações de usuários através do pacote jsonwebtoken.
+A implementação do código foi feita baseada na arquitetura de software MSC (Model-Service-Controller).
+
+# Tecnologias 
+- Node.js
+- Sequelize
+- Express
+- JavaScript
+- MySQL
